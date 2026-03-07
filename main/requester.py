@@ -20,5 +20,6 @@ def code(url: str) -> int:
 
 
 def test(url: str, route: str) -> str:
-    print(f"[{code(url)}] {url}/{route}")
+    Code = code(url)
+    print(f"[{Code}] {url}/{route}")
     return get(url)

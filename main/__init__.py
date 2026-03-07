@@ -3,7 +3,7 @@ from .requester import code, get, test
 import os
 
 available_wl = os.listdir("main/wordlist")
-HISTORY_DIR = "history"
+HISTORY_DIR = "main/history"
 if not os.path.exists(HISTORY_DIR):
     os.mkdir(HISTORY_DIR)
 
@@ -32,6 +32,8 @@ class Fuzzer:
             exit()
 
     def start(self):
+        if len(self.lines) == 0:
+            print("-> Cannot start with empty wordlist")
         for line in self.lines:
             t = test(self.url, line)
             if t:
