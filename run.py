@@ -10,3 +10,5 @@ fuzzer = Fuzzer(
 )
 
 fuzzer.start()
+
+fuzzer.save()
