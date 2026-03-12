@@ -5,7 +5,7 @@ from .requester import *
 
 
 class Fuzzer:
-    def __init__(self, url: str, wordlist: str, filename=f"{HISTORY_DIR}/history_{len(os.listdir(HISTORY_DIR))}.txt"):
+    def __init__(self, url: str, wordlist: str = None, filename=f"{HISTORY_DIR}/history_{len(os.listdir(HISTORY_DIR))}.txt"):
         self.filename = filename
         self.history = []
         self.success = []
@@ -21,12 +21,10 @@ class Fuzzer:
 
         if wordlist in available_wl:
             self.wordlist = wordlist
-            self.lines = getLines(wordlist)
-            print(f"[+] LOADED {len(self.lines)} lines from '{self.wordlist}'")
-
         else:
-            print("[X] No wordlist found '", wordlist, "' !")
-            exit()
+            self.wordlist = makeUserChooseWordlist()
+        self.lines = getLines(self.wordlist)
+        print(f"[+] LOADED {len(self.lines)} lines from '{self.wordlist}'")
 
     def start(self):
         if len(self.lines) == 0:
