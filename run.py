@@ -5,8 +5,7 @@ from main import Fuzzer
 
 
 fuzzer = Fuzzer(
-    url="https://www.google.com",
-    wordlist="wordpress.txt"
+    url="https://maths-france.fr/"
 )
 
 fuzzer.start()
